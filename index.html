@@ -8,17 +8,60 @@
   </head>
   <body>
     <div id="test-app"></div>
+    <div id="test-date"></div>
+    <div id="test-list"></div>
+    <!-- Javascript -->
     <script src="vendors/react.js"></script>
     <script src="vendors/react-dom.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script type="text/babel">
+    <script src="vendors/babel.min.js"></script>
+    <!-- <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+    <script cross type="text/babel">
       class StoryBox extends React.Component {
         render() {
           return <div className="story-box">Story Box</div>;
         }
       }
+      // Show current date
+      class DateApp extends React.Component {
+        render() {
+          const now = new Date();
+
+          return (
+            <div>
+              <h3>Date App</h3>
+              <p className="lead">Current time : {now.toTimeString()}</p>
+            </div>
+          );
+        }
+      }
+      // Show List
+      class ListApp extends React.Component {
+        render() {
+          const topicsList = ["Yolo", "Yoloo", "Yolooo"];
+
+          return (
+            <div>
+              <ul>
+                {topicsList.map(topic => (
+                  <li key={topic.toString()}>{topic}</li>
+                ))}
+              </ul>
+            </div>
+          );
+        }
+      }
 
       ReactDOM.render(<StoryBox />, document.getElementById("test-app"));
+      ReactDOM.render(<DateApp />, document.getElementById("test-date"));
+      ReactDOM.render(<ListApp />, document.getElementById("test-list"));
     </script>
   </body>
 </html>
